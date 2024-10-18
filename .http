@@ -18,3 +18,32 @@ Content-Type: application/json
     "username": "Zedd",
     "password": "TelosTour2024"
 }
+
+### Get a user's tasks
+@token = {{login.response.body.token}}
+GET {{host}}/tasks
+Authorization: Bearer {{token}}
+
+### Create a new task
+POST {{host}}/tasks
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Go to Warped Tour 2025"
+}
+
+### Update an existing task
+PUT {{host}}/tasks/6
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Listen to sad music",
+    "done": true
+}
+
+### Delete an existing task
+DELETE {{host}}/tasks/5
+Content-Type: application/json
+Authorization: Bearer {{token}}
