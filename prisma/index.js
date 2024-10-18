@@ -4,7 +4,7 @@ const prisma = new PrismaClient().$extends({
   model: {
     user: {
       async register(username, password) {
-        const hashPassword = bcrypt.hash(password, 10);
+        const hashPassword = await bcrypt.hash(password, 10);
         const user = await prisma.user.create({
           data: { username, password: hashPassword },
         });
